@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designo</title>
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.8.0/fonts/remixicon.css" rel="stylesheet"/>
+</head>
+<body>
+    <!-- Toolbar -->
+    <header class="toolbar">
+        <div id="title">
+            <h1>Designo</h1>
+        </div>
+        <div id="icons">
+            <i class="ri-rectangle-line" id="add-rectangle"></i>
+            <i class="ri-t-box-fill" id="add-textbox"></i>
+            <i class="ri-subtract-line" id="add-line"></i>
+            <i class="ri-arrow-up-long-line" id="add-arrow"></i>
+            <i class="ri-circle-line" id="add-ellipse"></i>
+        </div>
+        <div id="export">
+            <button id="exportJSON">Export JSON</button>
+            <button id="exportHTML">Export HTML</button>
+        </div>
+    </header>
+
+    <!-- Editor -->
+    <div class="editor">
+
+        <aside class="layers-panel">
+            <h2>Layers</h2><hr>
+            <ul id="layersList"></ul>
+
+            <button id="moveUp">Move Up</button>
+            <button id="moveDown">Move Down</button>
+        </aside>
+
+        <main class="canvas" id="canvas">
+        </main>
+
+        <aside class="properties-panel">
+            <h2>Properties</h2><hr>
+
+            <h4>Dimensions</h4>
+            <label>Width :
+                <input type="number" id="propWidth">
+            </label>
+            <label>Height :
+                <input type="number" id="propHeight">
+            </label><hr class="properties-hr">
+
+            <h4>Position</h4>
+            <label>X-axis :
+                <input type="number" id="posX">
+            </label>
+            <label>Y-axis :
+                <input type="number" id="posY">
+            </label><hr class="properties-hr">
+
+            <label>Rotation :
+                <input type="number" id="rotationInput">
+            </label> <hr class="properties-hr">
+
+            <label>Corner Radius :
+                <input type="range" id="radiusInput" min="0" max="100" value="0">
+            </label><hr class="properties-hr">
+
+            <label id="bgColor">Background :
+                <input type="color" id="propBg">
+            </label><hr class="properties-hr">
+
+            <label id="textProp">Text :
+                <input type="text" id="propText">
+            </label><hr class="properties-hr">
+
+            <div id="keyShortcut">
+                <h4>Keyboard Shortcuts</h4>
+                <p>Ctrl + S : Save layout</p>
+                <p>Ctrl + D : Duplicate element</p>
+                <p>Delete/Backspace : Delete element</p>
+                <p>Arrow keys : Move element</p>
+                <p>Shift + Arrow : Fast move</p>
+                <p>Esc : Deselect</p>
+            </div>
+        </aside>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

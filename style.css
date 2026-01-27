@@ -1,0 +1,309 @@
+@font-face {
+    font-family: Aeonik;
+    src: url(./Aeonik-Regular.ttf);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    font-family: Aeonik;
+}
+
+/* ====================  TOOLBAR   ==================== */
+
+.toolbar{
+    height: 80px;
+    width: auto;
+    color: #b3cfe5;
+    background-color: #0a1931;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.toolbar h1{
+    font-size: 40px;
+    margin-left: 40px;
+}
+.toolbar i{
+    font-size: 30px;
+    padding: 5px;
+    margin: 8px;    
+}
+i:hover{
+    background-color: #b3cfe536;
+    border-radius: 5px;
+}
+#icons{
+    padding: 10px 10px;
+    border: 2px solid;
+    border-radius: 5px;
+}
+.toolbar button{
+    padding: 12px;
+    margin-right: 15px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #b3cfe5;
+    background-color: #0a1931;
+    border: 2px solid #b3cfe5;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.toolbar button:hover{
+    color: #0a1931;
+    background-color: #b3cfe5;
+}
+.toolbar button:active{
+    scale: 0.95;
+}
+
+/* ==================== MAIN LAYOUT  ==================== */
+
+.editor{
+    flex: 1;
+    display: flex;
+    color: #0a1931;
+}
+
+/* ==================== CANVAS  ==================== */
+
+.canvas{
+    flex: 1;
+    background-color: #f6fafd;
+    position: relative;
+    overflow: hidden;
+}
+.element{
+    position: absolute;
+    cursor: pointer;
+}
+.element.selected {
+    outline: 2px solid black;
+}
+
+/* ==================== SHAPES  ==================== */
+
+.rectangle{
+    height: 80px;
+    width: 120px;
+    background-color: #b3cfe5;
+}
+.text{
+    min-width: 80px;
+    min-height: 30px;
+    padding: 5px;
+    border: 1px solid #0a1931;
+    border-radius: 3px;
+}
+.line {
+    width: 120px;
+    height: 2px;
+    background-color: #0a1931;
+}
+.arrow {
+    width: 120px;
+    height: 2px;
+    background: #0a1931;
+    position: relative;
+}
+.arrow::after {
+    content: "";
+    position: absolute;
+    right: -6px;
+    top: -4px;
+    border-left: 8px solid black;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+.ellipse {
+    width: 100px;
+    height: 100px;
+    background: #b3cfe5;
+    border-radius: 50%;
+}
+
+/* ==================== RESIZE HANDLES  ==================== */
+
+.resize-handle {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border: 1px solid #000;
+    position: absolute;
+    z-index: 10;
+}
+.resize-handle.tl {
+    top: -5px;
+    left: -5px;
+    cursor: nwse-resize;
+}
+.resize-handle.tr {
+    top: -5px;
+    right: -5px;
+    cursor: nesw-resize;
+}
+.resize-handle.bl {
+    bottom: -5px;
+    left: -5px;
+    cursor: nesw-resize;
+}
+.resize-handle.br {
+    bottom: -5px;
+    right: -5px;
+    cursor: nwse-resize;
+}
+
+/* ====================  ROTATION HANDLE  ==================== */
+
+.rotation-handle {
+    color: aqua;
+    background-color: #0a1931;
+    width: 12px;
+    height: 12px;
+    border-radius: 10px;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: grab;
+}
+
+/* ====================  LAYERS PANEL  ==================== */
+
+.layers-panel{
+    width: 250px;
+    background-color: #b3cfe5;
+    border-right: 2px solid #0a1931;
+    text-align: center;
+}
+hr{
+    height: 1.25px;
+    background-color: #0a1931;
+    border: none;
+}
+.layers-panel h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.layers-panel ul {
+    list-style: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.layers-panel li {
+    padding: 6px;
+    background: #f6fafd;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+.layers-panel li.active {
+    color: #f6fafd;
+    background-color: #0a193173;
+}
+.layers-panel button {
+    width: 50%;
+    color: #0a1931;
+    background-color: #b3cfe5;
+    border: 2px solid #0a1931;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+.layers-panel button:hover{
+    color: #b3cfe5;
+    background-color: #0a1931;
+}
+.layers-panel button:active{
+    scale: 0.95;
+}
+
+/* ==================== PROPERTIES PANEL ==================== */
+
+.properties-panel{
+    width: 270px;
+    background-color: #b3cfe5;
+    border-left: 2px solid #0a1931;
+    text-align: center;
+}
+.properties-panel h2{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.properties-panel h4{
+    text-align: start;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-weight: 600;
+}
+.properties-panel label {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 15px;
+    font-size: 14px;
+}
+.properties-panel input {
+    width: 50px;
+    padding: 4px;
+    border: 1px solid #0a1931;
+    border-radius: 5px ;
+}
+.properties-hr{
+    height: 1px;
+    background-color: #0a193184;
+    border: none
+}
+.properties-panel #propText{
+    width: 80%;
+    margin-left: 5px;
+}
+#radiusInput{
+    margin-top: 10px;
+    height: 5px;
+    width: 80%;
+}
+#propBg{
+    margin-left: 10px;
+    height: 40px;
+    width: 120px;
+}
+#bgColor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#keyShortcut{
+    color: #0a1931;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    margin-top: 20px;
+    margin-left: 14px;
+    border: 2px solid #0a1931;
+    border-radius: 10px;
+}
+#keyShortcut h4{
+    text-align: center;
+    margin: 0;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #0a1931;
+}
+#keyShortcut p{
+    font-size: 14px;
+    padding-bottom: 5px;
+    padding-left: 8px;
+}
